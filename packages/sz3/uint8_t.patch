@@ -1,0 +1,12 @@
+diff --git a/include/SZ3/utils/Config.hpp b/include/SZ3/utils/Config.hpp
+index caf0bfe..5444e98 100644
+--- a/include/SZ3/utils/Config.hpp
++++ b/include/SZ3/utils/Config.hpp
+@@ -8,6 +8,7 @@
+ #include <iostream>
+ #include <vector>
+ #include <numeric>
++#include <inttypes.h>
+ #include "SZ3/def.hpp"
+ #include "MemoryUtil.hpp"
+ #include "SZ3/utils/inih/INIReader.h"

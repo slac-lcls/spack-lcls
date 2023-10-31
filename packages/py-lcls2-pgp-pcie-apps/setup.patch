@@ -1,0 +1,16 @@
+diff --git a/setup.py b/setup.py
+index 12f980e..40e9801 100644
+--- a/setup.py
++++ b/setup.py
+@@ -13,10 +13,7 @@ setup(
+         'lcls2_pgp_pcie_apps',
+         'lcls2_pgp_pcie_apps.axipcie',
+         'lcls2_pgp_pcie_apps.l2si_core',
+-        'lcls2_pgp_pcie_apps.lcls2_pgp_fw_lib.hardware.XilinxKcu1500',
+-        'lcls2_pgp_pcie_apps.lcls2_pgp_fw_lib.hardware.SlacPgpCardG4',
+-        'lcls2_pgp_pcie_apps.lcls2_pgp_fw_lib.hardware',
+-        'lcls2_pgp_pcie_apps.lcls2_pgp_fw_lib.hardware.shared',
++        'lcls2_pgp_pcie_apps.lcls2_pgp_fw_lib.shared',
+         'lcls2_pgp_pcie_apps.lcls2_pgp_fw_lib',
+         'lcls2_pgp_pcie_apps.surf.misc',
+         'lcls2_pgp_pcie_apps.surf.xilinx',
