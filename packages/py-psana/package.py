@@ -24,7 +24,7 @@ class PyPsana(PythonPackage):
     depends_on("py-psalg", type=("build", "run"))
     depends_on("py-requests", type=("build", "run"))
     depends_on("py-mpi4py", type=("build", "run"))
-    depends_on("py-pymongo", type=("build", "run"))
+    depends_on("py-bson", type=("build", "run"))
     depends_on("py-amityping", type=("build", "run"))
     depends_on("py-mypy-extensions", type=("build", "run"))
     depends_on("py-h5py", type=("build", "run"))
@@ -37,8 +37,10 @@ class PyPsana(PythonPackage):
     depends_on("py-scikit-learn", type=("build", "run"))
     depends_on("py-pyabel", type=("build", "run"))
     depends_on("py-prometheus-client", type=("build", "run"))
+    depends_on("py-kafka-python", type=("build", "run"))
     depends_on("xtcdata", type=("build", "run", "link"))
     depends_on("psalg", type=("build", "run", "link"))
+    depends_on("libpressio", type=("build", "run", "link"))
 
     build_directory = "psana"
 
