@@ -10,11 +10,11 @@ class Psdaq(CMakePackage):
     """LCLS II Developement: PSDaq."""
 
     homepage = "https://github.com/slac-lcls/lcls2"
-    git = "https://github.com/slac-lcls/lcls2"
+    url = "https://github.com/slac-lcls/lcls2/archive/refs/tags/4.0.0.tar.gz"
 
     maintainers("valmar")
 
-    version("experimental", commit="97636eebb42e6648bf597bb5c8939f9b52f86632")
+    version("4.0.0", sha256="f38f8c884b688c3b681fbce9be6068078f8549b05f510234a61f985ae1db0cfd")
 
     depends_on("aes-stream-drivers-headers", type=("build"))
     depends_on("eigen", type=("build"))
