@@ -17,7 +17,7 @@ class PyPsana(PythonPackage):
     version("4.0.0", sha256="f38f8c884b688c3b681fbce9be6068078f8549b05f510234a61f985ae1db0cfd")
 
     depends_on("py-setuptools", type="build")
-    depends_on("py-cython", type="build")
+    depends_on("py-cython@:2", type="build")
     depends_on("python@3.9", type=("build", "run"))
     depends_on("py-numpy", type=("build", "run"))
     depends_on("py-matplotlib", type=("build", "run"))
