@@ -10,7 +10,7 @@ class Rogue(CMakePackage):
     """SLAC Python based hardware abstraction & data acquisition system."""
 
     homepage = "https://www.example.com"
-    url = "File:///sdf/scratch/users/m/mavaylon/spack/var/spack/repos/spack-lcls/packages/py-epix-hr-single-10k/rogue-6.1.1.tar.gz"
+    url = "file:///sdf/scratch/users/m/mavaylon/spack/var/spack/repos/spack-lcls/packages/py-epix-hr-single-10k/rogue-6.1.1.tar.gz"
 
     maintainers("valmar")
 
