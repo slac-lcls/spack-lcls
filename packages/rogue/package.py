@@ -10,11 +10,11 @@ class Rogue(CMakePackage):
     """SLAC Python based hardware abstraction & data acquisition system."""
 
     homepage = "https://www.example.com"
-    url = "https://github.com/slaclab/rogue/archive/refs/tags/v5.14.0.tar.gz"
+    url = "File:///sdf/scratch/users/m/mavaylon/spack/var/spack/repos/spack-lcls/packages/py-epix-hr-single-10k/rogue-6.1.1.tar.gz"
 
     maintainers("valmar")
 
-    version("5.18.4", sha256="b165555df40999d4c9fc08ae10b1eb9f43c9a2e8eb8e21a1ae79c89604c67292")
+    version("6.1.1", sha256="c0762d850608dbef04c1c26337b0d7172f1d58849c7f6a529b854a0794bddcff")
 
     depends_on("boost", type = ("build", "run"))
     depends_on("libzmq", type = ("build", "run"))
