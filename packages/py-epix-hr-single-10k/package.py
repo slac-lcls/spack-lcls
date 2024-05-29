@@ -10,11 +10,11 @@ class PyEpixHrSingle10k(PythonPackage):
     """LCLS-II Epix HR Singe 10k software and firmware.."""
 
     homepage = "https://github.com/slaclab/epix-hr-single-10k"
-    url = "https://pswww.slac.stanford.edu/swdoc/tutorials/epix-hr-single-10k-1.0.9.tar.gz"
+    url = "file:///sdf/group/lcls/ds/ana/sw/conda_bld/valmar/spack-bld/source_files/epix-hr-single-10k-1.3.4.tar.gz"
 
     maintainers = ["valmar"]
 
-    version("1.0.9", sha256="492ede2e48593a7102a2de12f3ebc8d6dee2d5382a064ffe2ea73a1bb97c09b6")
+    version("1.3.4", sha256="9056f270451c4a2044833a35836e183789c170c83999d14b363121d3c0a4b9a1")
     
     patch("setup.patch")
 
