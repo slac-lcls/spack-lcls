@@ -1,57 +1,127 @@
+diff --git a/firmware/python/epix_uhr_dev/__init__.py b/firmware/python/epix_uhr_dev/__init__.py
+index bcef1f6..3f65af0 100644
+--- a/firmware/python/epix_uhr_dev/__init__.py
++++ b/firmware/python/epix_uhr_dev/__init__.py
+@@ -1,3 +1,23 @@
++#-----------------------------------------------------------------------------
++# This file is part of the 'epix-hr-single-10k'. It is subject to
++# the license terms in the LICENSE.txt file found in the top-level directory
++# of this distribution and at:
++#    https://confluence.slac.stanford.edu/display/ppareg/LICENSE.html.
++# No part of the 'epix-hr-single-10k', including this file, may be
++# copied, modified, propagated, or distributed except according to the terms
++# contained in the LICENSE.txt file.
++#-----------------------------------------------------------------------------
++
++# this sys.path.append is a hack to allow a rogue device to import its
++# own version of device-specific submodules (surf/axi-pcie-core etc.) that
++# have been placed as subdirectories here by setup.py.  ryan herbst
++# thinks of these packages as a device-specific "board support package".
++# this allows one to put multiple devices in the same conda env.
++# a cleaner approach would be to use relative imports everywhere, but
++# that would be a lot of work for the tid-air people - cpo.
++import sys
++import os
++sys.path.append(os.path.dirname(os.path.realpath(__file__)))
+ from epix_uhr_dev._App              				import *
+ from epix_uhr_dev._Root             				import *
+ from epix_uhr_dev._UhrFramerAxi                     import *
+diff --git a/firmware/submodules/ePixViewer/__init__.py b/firmware/submodules/ePixViewer/__init__.py
+index a831a16..b601556 100644
+--- a/firmware/submodules/ePixViewer/__init__.py
++++ b/firmware/submodules/ePixViewer/__init__.py
+@@ -1,4 +1,4 @@
+-from software.ePixGUI import *
+-from software.ePixGUIEnvMonitoring import *
+-from software.ePixGUIPseudoScope import *
++from ePixViewer.software.ePixGUI import *
++from ePixViewer.software.ePixGUIEnvMonitoring import *
++from ePixViewer.software.ePixGUIPseudoScope import *
+ #from software.runLiveDisplay import *
 diff --git a/setup.py b/setup.py
-index 82cca2a..0eec0e8 100644
---- a/setup.py
+new file mode 100644
+index 0000000..656ebeb
+--- /dev/null
 +++ b/setup.py
-@@ -13,19 +13,23 @@ setup(
-         'epix_hr_single_10k.ePixAsics',
-         'epix_hr_single_10k.ePixFpga',
-         'epix_hr_single_10k.ePixViewer',
--        'epix_hr_single_10k.XilinxKcu1500Pgp3',
-         'epix_hr_single_10k.surf',
-+        'epix_hr_single_10k.surf.axi',
-         'epix_hr_single_10k.surf.devices',
-+        'epix_hr_single_10k.surf.devices.amphenol',
-         'epix_hr_single_10k.surf.devices.analog_devices',
-         'epix_hr_single_10k.surf.devices.cypress',
-         'epix_hr_single_10k.surf.devices.intel',
-         'epix_hr_single_10k.surf.devices.linear',
-+        'epix_hr_single_10k.surf.devices.maxim',
-         'epix_hr_single_10k.surf.devices.microchip',
-         'epix_hr_single_10k.surf.devices.micron',
-         'epix_hr_single_10k.surf.devices.nxp',
-         'epix_hr_single_10k.surf.devices.silabs',
-         'epix_hr_single_10k.surf.devices.ti',
-         'epix_hr_single_10k.surf.devices.transceivers',
-+        'epix_hr_single_10k.surf.dsp',
-+        'epix_hr_single_10k.surf.dsp.fixed',
-         'epix_hr_single_10k.surf.ethernet',
-         'epix_hr_single_10k.surf.ethernet.gige',
-         'epix_hr_single_10k.surf.ethernet.mac',
-@@ -36,12 +40,18 @@ setup(
-         'epix_hr_single_10k.surf.protocols',
-         'epix_hr_single_10k.surf.protocols.batcher',
-         'epix_hr_single_10k.surf.protocols.clink',
-+        'epix_hr_single_10k.surf.protocols.htsp',
-         'epix_hr_single_10k.surf.protocols.i2c',
-         'epix_hr_single_10k.surf.protocols.jesd204b',
-         'epix_hr_single_10k.surf.protocols.pgp',
-         'epix_hr_single_10k.surf.protocols.rssi',
-+        'epix_hr_single_10k.surf.protocols.sugoi',
-         'epix_hr_single_10k.surf.protocols.ssi',
-+        'epix_hr_single_10k.surf.protocols.ssp',
-+        'epix_hr_single_10k.surf.protocols.coaxpress',
-         'epix_hr_single_10k.surf.xilinx',
-+        'epix_hr_single_10k.l2si_core',
-+        'epix_hr_single_10k.epix_hr_core',
-     ],
-     package_dir = {
-         'epix_hr_single_10k': 'software/python',
-@@ -51,5 +61,8 @@ setup(
-         'epix_hr_single_10k.ePixFpga': 'software/python/ePixFpga',
-         'epix_hr_single_10k.ePixViewer': 'software/python/ePixViewer',
-         'epix_hr_single_10k.XilinxKcu1500Pgp3': 'software/python/XilinxKcu1500Pgp3',
-+        'epix_hr_single_10k.LclsTimingCore': 'firmware/submodules/lcls-timing-core/python/LclsTimingCore',
-+        'epix_hr_single_10k.l2si_core': 'firmware/submodules/l2si-core/python/l2si_core',
-+        'epix_hr_single_10k.epix_hr_core': 'firmware/submodules/epix-hr-core/python/epix_hr_core',
-     }
- )
+@@ -0,0 +1,81 @@
++from setuptools import setup
++
++# use softlinks to make the various "board-support-package" submodules
++# look like subpackages.  Then __init__.py will modify
++# sys.path so that the correct "local" versions of surf etc. are
++# picked up.  A better approach would be using relative imports
++# in the submodules, but that's more work.  -cpo
++setup(
++    name = 'epix_uhr_dev',
++    description = 'Epix UHR development package',
++    packages = [
++        'epix_uhr_dev',
++        'epix_uhr_dev.axipcie',
++        'epix_uhr_dev.asic_reg_mapping',
++        'epix_uhr_dev.asic_reg_mapping.Epix10ka',
++        'epix_uhr_dev.asic_reg_mapping.EpixHr10kT',
++        'epix_uhr_dev.asic_reg_mapping.SparkPixED',
++        'epix_uhr_dev.asic_reg_mapping.EpixHrMv2',
++        'epix_uhr_dev.asic_reg_mapping.SparkPixRt',
++        'epix_uhr_dev.asic_reg_mapping.EpixHrAdc',
++        'epix_uhr_dev.asic_reg_mapping.EpixS',
++        'epix_uhr_dev.asic_reg_mapping.Epix100a',
++        'epix_uhr_dev.asic_reg_mapping.Tixel',
++        'epix_uhr_dev.asic_reg_mapping.SparkPixS',
++        'epix_uhr_dev.asic_reg_mapping.Cpix2',
++        'epix_uhr_dev.asic_reg_mapping.EpixUhr',
++        'epix_uhr_dev.l2si_core',
++        'epix_uhr_dev.LclsTimingCore',
++        'epix_uhr_dev.epix_hr_core',
++        'epix_uhr_dev.surf',
++        'epix_uhr_dev.surf.protocols',
++        'epix_uhr_dev.surf.protocols.clink',
++        'epix_uhr_dev.surf.protocols.htsp',
++        'epix_uhr_dev.surf.protocols.pgp',
++        'epix_uhr_dev.surf.protocols.sugoi',
++        'epix_uhr_dev.surf.protocols.batcher',
++        'epix_uhr_dev.surf.protocols.jesd204b',
++        'epix_uhr_dev.surf.protocols.rssi',
++        'epix_uhr_dev.surf.protocols.i2c',
++        'epix_uhr_dev.surf.protocols.ssp',
++        'epix_uhr_dev.surf.protocols.ssi',
++        'epix_uhr_dev.surf.protocols.coaxpress',
++        'epix_uhr_dev.surf.misc',
++        'epix_uhr_dev.surf.dsp',
++        'epix_uhr_dev.surf.dsp.fixed',
++        'epix_uhr_dev.surf.devices',
++        'epix_uhr_dev.surf.devices.silabs',
++        'epix_uhr_dev.surf.devices.intel',
++        'epix_uhr_dev.surf.devices.linear',
++        'epix_uhr_dev.surf.devices.cypress',
++        'epix_uhr_dev.surf.devices.maxim',
++        'epix_uhr_dev.surf.devices.analog_devices',
++        'epix_uhr_dev.surf.devices.micron',
++        'epix_uhr_dev.surf.devices.transceivers',
++        'epix_uhr_dev.surf.devices.microchip',
++        'epix_uhr_dev.surf.devices.nxp',
++        'epix_uhr_dev.surf.devices.ti',
++        'epix_uhr_dev.surf.devices.amphenol',
++        'epix_uhr_dev.surf.xilinx',
++        'epix_uhr_dev.surf.axi',
++        'epix_uhr_dev.surf.ethernet.ten_gig',
++        'epix_uhr_dev.surf.ethernet.udp',
++        'epix_uhr_dev.surf.ethernet',
++        'epix_uhr_dev.surf.ethernet.xaui',
++        'epix_uhr_dev.surf.ethernet.mac',
++        'epix_uhr_dev.surf.ethernet.gige',
++        'epix_uhr_dev.ePixViewer',
++        'epix_uhr_dev.ePixViewer.software',
++        'epix_uhr_dev.ePixViewer.software.deviceFiles',
++    ],
++    package_dir = {
++        'epix_uhr_dev': 'firmware/python/epix_uhr_dev',
++        'epix_uhr_dev.axipcie': 'firmware/submodules/axi-pcie-core/python/axipcie',
++        'epix_uhr_dev.asic_reg_mapping': 'firmware/submodules/AsicRegMapping/python/asic_reg_mapping',
++        'epix_uhr_dev.l2si_core': 'firmware/submodules/l2si-core/python/l2si_core',
++        'epix_uhr_dev.LclsTimingCore': 'firmware/submodules/lcls-timing-core/python/LclsTimingCore',
++        'epix_uhr_dev.epix_hr_core': 'firmware/submodules/epix-hr-core/python/epix_hr_core',
++        'epix_uhr_dev.surf': 'firmware/submodules/surf/python/surf',
++        'epix_uhr_dev.ePixViewer': 'firmware/submodules/ePixViewer',
++    }
++)
