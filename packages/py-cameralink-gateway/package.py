@@ -10,10 +10,10 @@ class PyCameralinkGateway(PythonPackage):
     """LCLS-II Cameralink Gateway software and firmware."""
 
     homepage = "https://github.com/slaclab/lcls2-timetool"
-    url = "https://pswww.slac.stanford.edu/swdoc/tutorials/cameralink-gateway-7.11.1.tar.gz"
+    url = "https://pswww.slac.stanford.edu/swdoc/tutorials/cameralink-gateway-8.2.0.tar.gz"
 
     maintainers = ["valmar"]
 
-    version("7.11.1", sha256="c4aec433edc8c32aa82cfd580da2af1d12fd0299673d9a1dca9123352479cc4d")
+    version("8.2.0", sha256="636c574864e8474f06962a0aceef7ef23e8a1d17a03718352b54fece7e6e330b")
 
     depends_on("py-setuptools", type="build")
