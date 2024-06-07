@@ -1,0 +1,109 @@
+diff --git a/firmware/python/__init__.py b/firmware/python/__init__.py
+new file mode 100644
+index 0000000..d476dff
+--- /dev/null
++++ b/firmware/python/__init__.py
+@@ -0,0 +1,3 @@
++import sys
++import os
++sys.path.append(os.path.dirname(os.path.realpath(__file__)))
+diff --git a/pip_requirements.txt b/pip_requirements.txt
+index 7834353..56bbf99 100644
+--- a/pip_requirements.txt
++++ b/pip_requirements.txt
+@@ -19,3 +19,4 @@ flake8
+ gitpython
+ pygithub
+ 
++
+diff --git a/setup.py b/setup.py
+new file mode 100644
+index 0000000..639a14a
+--- /dev/null
++++ b/setup.py
+@@ -0,0 +1,85 @@
++from setuptools import setup
++
++# use softlinks to make the various "board-support-package" submodules
++# look like subpackages.  Then __init__.py will modify
++# sys.path so that the correct "local" versions of surf etc. are
++# picked up.  A better approach would be using relative imports
++# in the submodules, but that's more work.  -cpo
++setup(
++    name = 'epix-hr-m-320k',
++    description = 'Epix HR M 320k development package',
++    packages = [
++        'epix_hr_m_320k',
++        'epix_hr_m_320k.surf',
++        'epix_hr_m_320k.surf.protocols',
++        'epix_hr_m_320k.surf.protocols.clink',
++        'epix_hr_m_320k.surf.protocols.htsp',
++        'epix_hr_m_320k.surf.protocols.pgp',
++        'epix_hr_m_320k.surf.protocols.sugoi',
++        'epix_hr_m_320k.surf.protocols.batcher',
++        'epix_hr_m_320k.surf.protocols.jesd204b',
++        'epix_hr_m_320k.surf.protocols.rssi',
++        'epix_hr_m_320k.surf.protocols.i2c',
++        'epix_hr_m_320k.surf.protocols.ssp',
++        'epix_hr_m_320k.surf.protocols.ssi',
++        'epix_hr_m_320k.surf.protocols.coaxpress',
++        'epix_hr_m_320k.surf.misc',
++        'epix_hr_m_320k.surf.dsp',
++        'epix_hr_m_320k.surf.dsp.fixed',
++        'epix_hr_m_320k.surf.devices',
++        'epix_hr_m_320k.surf.devices.silabs',
++        'epix_hr_m_320k.surf.devices.intel',
++        'epix_hr_m_320k.surf.devices.linear',
++        'epix_hr_m_320k.surf.devices.cypress',
++        'epix_hr_m_320k.surf.devices.maxim',
++        'epix_hr_m_320k.surf.devices.analog_devices',
++        'epix_hr_m_320k.surf.devices.micron',
++        'epix_hr_m_320k.surf.devices.transceivers',
++        'epix_hr_m_320k.surf.devices.microchip',
++        'epix_hr_m_320k.surf.devices.nxp',
++        'epix_hr_m_320k.surf.devices.ti',
++        'epix_hr_m_320k.surf.devices.amphenol',
++        'epix_hr_m_320k.surf.xilinx',
++        'epix_hr_m_320k.surf.axi',
++        'epix_hr_m_320k.surf.ethernet.ten_gig',
++        'epix_hr_m_320k.surf.ethernet.udp',
++        'epix_hr_m_320k.surf.ethernet',
++        'epix_hr_m_320k.surf.ethernet.xaui',
++        'epix_hr_m_320k.surf.ethernet.mac',
++        'epix_hr_m_320k.surf.ethernet.gige',
++        'epix_hr_m_320k.asic_reg_mapping',
++        'epix_hr_m_320k.asic_reg_mapping.Epix10ka',
++        'epix_hr_m_320k.asic_reg_mapping.EpixHr10kT',
++        'epix_hr_m_320k.asic_reg_mapping.SparkPixED',
++        'epix_hr_m_320k.asic_reg_mapping.EpixHrMv2',
++        'epix_hr_m_320k.asic_reg_mapping.SparkPixRt',
++        'epix_hr_m_320k.asic_reg_mapping.EpixHrAdc',
++        'epix_hr_m_320k.asic_reg_mapping.EpixS',
++        'epix_hr_m_320k.asic_reg_mapping.Epix100a',
++        'epix_hr_m_320k.asic_reg_mapping.Tixel',
++        'epix_hr_m_320k.asic_reg_mapping.SparkPixS',
++        'epix_hr_m_320k.asic_reg_mapping.Cpix2',
++        'epix_hr_m_320k.asic_reg_mapping.EpixUhr',
++        'epix_hr_m_320k.asic_reg_mapping.SparkPixS_XPC',
++        'epix_hr_m_320k.l2si_core',
++        'epix_hr_m_320k.axipcie',
++        'epix_hr_m_320k.LclsTimingCore',
++        'epix_hr_m_320k.epix_hr_core',
++        'epix_hr_m_320k.epix_hr_leap_common',
++        'epix_hr_m_320k.pciePgpCard',
++        'epix_hr_m_320k.ePix320kM',
++    ],
++    package_dir = {
++        'epix_hr_m_320k': 'firmware/python',
++        'epix_hr_m_320k.surf': 'firmware/submodules/surf/python/surf',
++        'epix_hr_m_320k.asic_reg_mapping': 'firmware/submodules/AsicRegMapping/python/asic_reg_mapping',
++        'epix_hr_m_320k.ePixViewer': 'firmware/python/ePixViewer',
++        'epix_hr_m_320k.l2si_core': 'firmware/submodules/l2si-core/python/l2si_core',
++        'epix_hr_m_320k.axipcie': 'firmware/submodules/axi-pcie-core/python/axipcie',
++        'epix_hr_m_320k.LclsTimingCore': 'firmware/submodules/lcls-timing-core/python/LclsTimingCore',
++        'epix_hr_m_320k.epix_hr_core': 'firmware/submodules/epix-hr-core/python/epix_hr_core',
++        'epix_hr_m_320k.epix_hr_leap_common': 'firmware/submodules/epix-hr-leap-common/python/epix_hr_leap_common',
++        'epix_hr_m_320k.pciePgpCard': 'firmware/python/pciePgpCard',
++        'epix_hr_m_320k.ePix320kM': 'firmware/python/ePix320kM',
++    }
++)
