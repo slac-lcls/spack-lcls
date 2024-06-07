@@ -1,7 +1,6 @@
-# Copyright 2013-2022 Lawrence Livermore National Security, LLC and other
-# Spack Project Developers. See the top-level COPYRIGHT file for details.
-#
-# SPDX-License-Identifier: (Apache-2.0 OR MIT)
+# Copyright (c) 2024, The Board of Trustees of the Leland Stanford Junior
+# University, through SLAC National Accelerator Laboratory (subject to receipt
+# of any required approvals from the U.S. Dept. of Energy).
 
 from spack.package import *
 
