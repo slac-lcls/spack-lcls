@@ -10,13 +10,13 @@ class Rogue(CMakePackage):
     """SLAC Python based hardware abstraction & data acquisition system."""
 
     homepage = "https://www.example.com"
-    url = "https://github.com/slaclab/rogue/archive/refs/tags/v5.14.0.tar.gz"
+    url = "file:///sdf/group/lcls/ds/ana/sw/conda_bld/valmar/spack-bld/source_files/rogue-6.1.1.tar.gz"
 
     maintainers("valmar")
 
-    version("5.18.4", sha256="b165555df40999d4c9fc08ae10b1eb9f43c9a2e8eb8e21a1ae79c89604c67292")
+    version("6.1.1", sha256="c0762d850608dbef04c1c26337b0d7172f1d58849c7f6a529b854a0794bddcff")
 
-    depends_on("boost", type = ("build", "run"))
+    depends_on("boost+python", type = ("build", "run"))
     depends_on("libzmq", type = ("build", "run"))
     depends_on("python", type = ("build", "run"))
     depends_on("py-pyyaml", type = ("build", "run"))
@@ -44,3 +44,4 @@ class Rogue(CMakePackage):
     def cmake_args(self):
         args = ["-DROGUE_INSTALL=system", "-DROGUE_DIR={0}".format(self.prefix), "-DCMAKE_BUILD_TYPE=RelWithDebInfo", "-DROGUE_VERSION=v{0}".format(self.version)]
         return args
+    
