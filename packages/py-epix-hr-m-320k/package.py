@@ -7,7 +7,7 @@ from spack.package import *
 
 
 class PyEpixHrM320k(PythonPackage):
-    """LCLS-II Epix HR M 320k software and firmware.."""
+    """LCLS-II Epix HR M 320k software and firmware."""
 
     homepage = "https://github.com/slaclab/epix-hr-m-320k"    
     url = "file:///sdf/group/lcls/ds/ana/sw/conda_bld/valmar/spack-bld/source_files/epix-hr-m-320k-1.1.5.tar.gz"
