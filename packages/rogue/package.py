@@ -10,7 +10,7 @@ class Rogue(CMakePackage):
     """SLAC Python based hardware abstraction & data acquisition system."""
 
     homepage = "https://www.example.com"
-    url = "file:///sdf/group/lcls/ds/ana/sw/conda_bld/valmar/spack-bld/source_files/rogue-6.1.1.tar.gz"
+    url = "file:///sdf/group/lcls/ds/ana/sw/source_files/rogue-6.1.1.tar.gz"
 
     maintainers("valmar")
 

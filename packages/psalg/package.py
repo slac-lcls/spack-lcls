@@ -14,6 +14,7 @@ class Psalg(CMakePackage):
 
     maintainers("valmar")
 
+    version("4.1.0", sha256="f3f2c7850f43a2e0dbed7589ff37a706fe17e4fa07f2878dca47f6b6ea7d677b")
     version("4.0.0", sha256="f38f8c884b688c3b681fbce9be6068078f8549b05f510234a61f985ae1db0cfd")
 
     depends_on("xtcdata", type=("build", "run"))
