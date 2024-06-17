@@ -9,7 +9,7 @@ class PyHighRateEncoder(PythonPackage):
     """LCLS-II High Rate Encoder software and firmware."""
 
     homepage = "https://github.com/slaclab/high-rate-encoder-dev"
-    url = "file:///sdf/group/lcls/ds/ana/sw/conda_bld/valmar/spack-bld/source_files/high-rate-encoder-dev-2.0.0.tar.gz" 
+    url = "file:///sdf/group/lcls/ds/ana/sw/source_files/high-rate-encoder-dev-2.0.0.tar.gz" 
 
     maintainers = ["valmar","mavaylon1"]
 

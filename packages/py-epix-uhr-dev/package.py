@@ -10,11 +10,11 @@ class PyEpixUhrDev(PythonPackage):
     """LCLS-II Epix UHR software and firmware.."""
 
     homepage = "https://github.com/slaclab/epix-uhr-dev"
-    url = "https://pswww.slac.stanford.edu/swdoc/tutorials/epix-uhr-dev-1.0.3.tar.gz"
+    url = "file:///sdf/group/lcls/ds/ana/sw/source_files/epix-uhr-dev-1.0.3.tar.gz"
 
     maintainers = ["valmar"]
 
-    version("1.0.9", sha256="492ede2e48593a7102a2de12f3ebc8d6dee2d5382a064ffe2ea73a1bb97c09b6")
+    version("1.0.3", sha256="492ede2e48593a7102a2de12f3ebc8d6dee2d5382a064ffe2ea73a1bb97c09b6")
     
     patch("setup.patch")
 
