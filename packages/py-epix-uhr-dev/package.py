@@ -14,7 +14,7 @@ class PyEpixUhrDev(PythonPackage):
 
     maintainers = ["valmar"]
 
-    version("1.0.3", sha256="492ede2e48593a7102a2de12f3ebc8d6dee2d5382a064ffe2ea73a1bb97c09b6")
+    version("1.0.3", sha256="6c96f69743e25ceb3c4210e0b7a0af0fd37992ffb68c9df4bc58585bcaf37c55")
     
     patch("setup.patch")
 
