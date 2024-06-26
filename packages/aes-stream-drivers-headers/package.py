@@ -16,6 +16,7 @@ class AesStreamDriversHeaders(Package):
 
     maintainers("valmar")
 
+    version("5.19.1", sha256="27bdd0c37a34a184c0a7eab9941091e3138a8b3d3d55ac3062c13b39f4c9a8fb")
     version("5.17.3", sha256="f649de81143b8afe3c1c148aa6b2949357d719737aae0b0443500af4d8fd99cd")
 
     def install(self, spec, prefix):
