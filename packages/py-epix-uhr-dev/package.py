@@ -16,6 +16,6 @@ class PyEpixUhrDev(PythonPackage):
 
     version("1.0.3", sha256="6c96f69743e25ceb3c4210e0b7a0af0fd37992ffb68c9df4bc58585bcaf37c55")
     
-    patch("setup.patch")
+    patch("setup.patch", sha256="01cfdf555faacaeacd0c2c6273a084460b24803df15fa336300d875bff894562")
 
     depends_on("py-setuptools", type="build")
