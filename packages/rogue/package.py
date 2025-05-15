@@ -9,12 +9,12 @@ from spack.package import *
 class Rogue(CMakePackage):
     """SLAC Python based hardware abstraction & data acquisition system."""
 
-    homepage = "https://www.example.com"
-    url = "file:///sdf/group/lcls/ds/ana/sw/source_files/rogue-6.1.1.tar.gz"
+    homepage = "https://github.com/slaclab/rogue"
+    url = "file:///sdf/group/lcls/ds/ana/sw/source_files/rogue-6.1.3.tar.gz"
 
     maintainers("valmar")
 
-    version("6.1.1", sha256="c0762d850608dbef04c1c26337b0d7172f1d58849c7f6a529b854a0794bddcff")
+    version("6.1.3", sha256="cddc55af0ff0d3c9047fab59d2bc72c72d0217ed31d928d1c5d54d790e96ba09")
 
     depends_on("boost+python", type = ("build", "run"))
     depends_on("libzmq", type = ("build", "run"))
@@ -23,7 +23,6 @@ class Rogue(CMakePackage):
     depends_on("py-parse", type = ("build", "run"))
     depends_on("py-click", type = ("build", "run"))
     depends_on("py-coverage", type = ("build", "run"))
-    #depends_on("py-codecov", type = ("build", "run"))
     depends_on("py-pytest@3.6:", type = ("build", "run"))
     depends_on("py-pytest-cov", type = ("build", "run"))
     depends_on("py-sphinx", type = ("build", "run"))

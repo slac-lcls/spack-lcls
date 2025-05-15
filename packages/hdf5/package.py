@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack.package import *
-from spack.pkg.builtin.hdf5 import Hdf5 as BuiltinHdf5
+from spack_repo.builtin.packages.hdf5.package import Hdf5 as BuiltinHdf5
 
 
 class Hdf5(BuiltinHdf5):
