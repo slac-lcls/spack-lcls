@@ -3,6 +3,7 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
+from spack_repo.builtin.build_systems.cmake import CMakePackage
 from spack.package import *
 
 
@@ -15,6 +16,9 @@ class Rogue(CMakePackage):
     maintainers("valmar")
 
     version("6.1.3", sha256="cddc55af0ff0d3c9047fab59d2bc72c72d0217ed31d928d1c5d54d790e96ba09")
+
+    depends_on("c", type="build")
+    depends_on("cxx", type="build")
 
     depends_on("boost+python", type = ("build", "run"))
     depends_on("libzmq", type = ("build", "run"))

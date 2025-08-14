@@ -3,6 +3,7 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
+from spack_repo.builtin.build_systems.python import PythonPackage
 from spack.package import *
 
 
@@ -10,12 +11,11 @@ class PyP4p(PythonPackage):
     """PVAccess for Python."""
 
     homepage = "https://mdavidsaver.github.io/p4p"
-    pypi = "p4p/p4p-4.1.5.tar.gz"
+    pypi = "p4p/p4p-4.2.0.tar.gz"
 
     maintainers("valmar")
 
-    version("4.2.0", sha256="7afb76f93d13ce9da24502676d8f2d4dbc3da35c6245f95f27df9fa7445079a4")
-    version("4.1.5", sha256="25130597c4333590a4b2fc98fea2a0cd8615647d4e9454ddeddc6700112f8f04")
+    version("4.2.0", sha256="0786e48302666f44fad71dca783b7ef2aa2373cfe4dbd3115eac655f30fecb33")
 
     depends_on("python@2.7:", type=("build", "run"))
     depends_on("py-setuptools", type="build")

@@ -3,6 +3,7 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
+from spack_repo.builtin.build_systems.cmake import CMakePackage
 from spack.package import *
 
 
@@ -15,6 +16,10 @@ class Slsdetlib(CMakePackage):
     maintainers("valmar")
 
     version("9.0.0", sha256="35758052864ee06497e16be0b298c798cd089982c3a31e6a9b98a56ea0176626")
+
+
+    depends_on("c", type="build")
+    depends_on("cxx", type="build")
 
     depends_on("libbsd", type=("build", "run"))
     depends_on("libmd", type=("build", "run"))
