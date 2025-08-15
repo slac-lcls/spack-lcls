@@ -19,7 +19,6 @@ class Rogue(CMakePackage):
 
     depends_on("c", type="build")
     depends_on("cxx", type="build")
-
     depends_on("boost+python", type = ("build", "run"))
     depends_on("libzmq", type = ("build", "run"))
     depends_on("python", type = ("build", "run"))

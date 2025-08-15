@@ -20,7 +20,6 @@ class Slsdetlib(CMakePackage):
 
     depends_on("c", type="build")
     depends_on("cxx", type="build")
-
     depends_on("libbsd", type=("build", "run"))
     depends_on("libmd", type=("build", "run"))
 

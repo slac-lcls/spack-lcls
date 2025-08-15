@@ -15,15 +15,14 @@ class PyPydm(PythonPackage):
 
     maintainers("valmar")
 
-    version("1.25.1", sha256="1eedd760ac347488eaa6ac4d95941bbaa7b92c468836e5e9d19d6350a08c4808")
-    version("1.18.1", sha256="74dfae71e2e66dc6799efbe489c363a22597718cc0b32566823d643664e707fa")
+    version("1.27.2", sha256="3ad2baeb84511d68a916ee267cea4406076c75926211afd7c5a342498273f5d8")
 
     depends_on("py-setuptools", type="build")
     depends_on("py-entrypoints", type=("build", "run"))
     depends_on("py-numpy@1.11.0:", type=("build", "run"))
     depends_on("py-pyepics@3.2.7:", type=("build", "run"))
     depends_on("py-pyqtgraph@0.12.0:", type=("build", "run"))
-    depends_on("py-qtpy", type=("build", "run"))
+    depends_on("py-qtpy@2.2.0:", type=("build", "run"))
     depends_on("py-requests@1.1.0:", type=("build", "run"))
     depends_on("py-scipy@0.12.0:", type=("build", "run"))
     depends_on("py-six", type=("build", "run"))

@@ -13,10 +13,10 @@ class PyKafkaPython(PythonPackage):
     # FIXME: Add a proper url for your package's homepage here.
     homepage = "https://github.com/dpkp/kafka-python"
     homepage = "https://www.example.com"
-    pypi = "kafka_python/kafka_python-2.2.3.tar.gz"
+    pypi = "kafka_python/kafka_python-2.2.15.tar.gz"
 
     maintainers("valmar")
 
-    version("2.2.3", sha256="b2d9c4e05b5cce66d46f1122992246731bbbea222b22209539f5ff6de2fd06ee")
+    version("2.2.15", sha256="ie0f480a45f3814cb0eb705b8b4f61069e1be61dae0d8c69d0f1f2da33eea1bd5")
 
     depends_on("py-setuptools", type="build")

@@ -10,7 +10,7 @@ from spack.package import *
 class PyP4p(PythonPackage):
     """PVAccess for Python."""
 
-    homepage = "https://mdavidsaver.github.io/p4p"
+    homepage = "https://epics-base.github.io/p4p/"
     pypi = "p4p/p4p-4.2.0.tar.gz"
 
     maintainers("valmar")

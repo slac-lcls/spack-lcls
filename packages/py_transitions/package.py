@@ -11,12 +11,11 @@ class PyTransitions(PythonPackage):
     """A lightweight, object-oriented Python state machine implementation with many extensions."""
 
     homepage = "https://github.com/pytransitions/transitions"
-    pypi = "transitions/transitions-0.9.0.tar.gz"
+    pypi = "transitions/transitions-0.9.3.tar.gz"
 
     maintainers("valmar")
 
-    version("0.9.2", sha256="2f8490dbdbd419366cef1516032ab06d07ccb5839ef54905e842a472692d4204")
-    version("0.9.0", sha256="2f54d11bdb225779d7e729011e93a9fb717668ce3dc65f8d4f5a5d7ba2f48e10")
+    version("0.9.3", sha256="881fb75bb1654ed55d86060bb067f2c716f8e155f57bb73fd444e53713aafec8")
 
     depends_on("py-setuptools", type="build")
     depends_on("py-six", type=("build", "run"))

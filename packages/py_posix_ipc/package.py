@@ -11,12 +11,10 @@ class PyPosixIpc(PythonPackage):
     """POSIX IPC for Python."""
 
     homepage = "https://github.com/osvenskan/posix_ipc"
-    pypi = "posix_ipc/posix_ipc-1.1.0.tar.gz"
+    pypi = "posix_ipc/posix_ipc-1.3.0.tar.gz"
 
     maintainers("valmar")
 
-    version("1.2.0", sha256="b7444e2703c156b3cb9fcb568e85d716232f3e78f04529ebc881cfb2aedb3838")
-    version("1.1.1", sha256="e2456ba0cfb2ee5ba14121450e8d825b3c4a1461fca0761220aab66d4111cbb7")
-    version("1.1.0", sha256="f86a15b32b38573c78e305ebd9100d8198a3d9facc03ffafe39edc35833738e3")
+    version("1.3.0", sha256="6e559ac5bb5f6f233c396103f4868e383bbd8f4e54d20876910896f47d353448")
 
     depends_on("py-setuptools", type="build")

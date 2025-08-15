@@ -11,7 +11,7 @@ class PyScikitBeam(PythonPackage):
     """Data analysis tools for X-Ray, Neutron and Electron sciences."""
 
     homepage = "https://github.com/scikit-beam/scikit-beam"
-    pypi = "scikit-beam/scikit-beam-0.0.24.tar.gz"
+    pypi = "scikit-beam/scikit-beam-0.0.26.tar.gz"
 
     maintainers = ["valmar"]
 
